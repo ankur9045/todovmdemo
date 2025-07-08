@@ -1,4 +1,4 @@
-resourec"azurerm_resource_group""eng"{
-name=
-location
+resourec "azurerm_resource_group" "eng" {
+name = "rg_1"
+location = "central india"
 }
