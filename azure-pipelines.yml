@@ -22,7 +22,7 @@ steps:
   inputs:
     provider: 'azurerm'
     command: 'init'
-    workingDirectory: workingpath
+    workingDirectory: 'workingpath'
     backendServiceArm: 'azure service'
     backendAzureRmResourceGroupName: 'ankurrg'
     backendAzureRmStorageAccountName: 'ankursgaaa'
@@ -32,10 +32,10 @@ steps:
   inputs:
     provider: 'azurerm'
     command: 'validate'
-    workingDirectory: workingpath
+    workingDirectory: 'workingpath'
 
 - task: TerraformTask@5
   inputs:
     provider: 'azurerm'
     command: 'plan'
-    workingDirectory: workingpath
+    workingDirectory: 'workingpath'
