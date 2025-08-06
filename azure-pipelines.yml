@@ -5,6 +5,9 @@
 
 trigger:
 - main
+variables: 
+
+  workingpath: $(System.DefaultWorkingDirectory)/infra
 
 pool:
   yamlagent1
@@ -19,9 +22,20 @@ steps:
   inputs:
     provider: 'azurerm'
     command: 'init'
-    workingDirectory: '$(System.DefaultWorkingDirectory)/infra'
+    workingDirectory: workingpath
     backendServiceArm: 'azure service'
     backendAzureRmResourceGroupName: 'ankurrg'
     backendAzureRmStorageAccountName: 'ankursgaaa'
     backendAzureRmContainerName: 'ankurconter'
     backendAzureRmKey: 'terraform.tfstate'
+- task: TerraformTask@5
+  inputs:
+    provider: 'azurerm'
+    command: 'validate'
+    workingDirectory: workingpath
+
+- task: TerraformTask@5
+  inputs:
+    provider: 'azurerm'
+    command: 'plan'
+    workingDirectory: workingpath
